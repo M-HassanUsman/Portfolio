@@ -26,6 +26,18 @@ a {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1s;
+}
+@keyframes show-content {
+100%
+    {
+        visibility: visible;
+        opacity: 1;
+}
+
 }
 
 .navbar .logo {
@@ -65,10 +77,15 @@ a {
     align-items: center;
     height: 100vh;
     width: 85%;
+    gap: 50px;
     justify-content: space-between;
     /* padding: 60px 9% 0; */
     color: #fff;
     margin: auto;
+    visibility: hidden;
+    opacity: 0;
+    animation: show-content 1.5s linear forwards;
+    animation-delay: 1.6s;
 }
     
 .home-info h1 {
@@ -76,8 +93,44 @@ a {
 }
 
 .home-info h2 {
+    display: inline-block;
     font-size: 32px;
     margin-top:-10px;
+    /* background: slateblue; */
+}
+
+.home-info h2 span {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    -webkit-text-stroke: .7px #7cf03d;
+    animation: display-text 16s linear infinite;
+    animation-delay: calc(-4s * var(--i));
+}
+
+@keyframes display-text {
+    25%,100%{
+        display: none;
+    }
+}
+
+.home-info h2 span::before {
+    content:attr(data-text);
+    position: absolute;
+    width: 0;
+    border-right: 2px solid #7cf03d;
+    color: #7cf03d;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: fill-text 4s linear infinite;
+}
+@keyframes fill-text{
+    10%,100%{
+        width:0;
+    }
+    70%,90%{
+        width:100%;
+    }
 }
 
 .home-info p {
@@ -157,6 +210,18 @@ a {
     height: 100%;
     border-radius: 50%;
     background: conic-gradient(transparent, transparent, transparent, #7cf03d);
+    transform: rotate(0deg);
+    animation: rotate-border 10s linear infinite;
+}
+
+.home-img .img-box::after {
+    animation-delay: -5s;
+}
+
+@keyframes rotate-border{
+    100%{
+        transform: rotate(360deg);
+    }
 }
 
 .home-img .img-box .img-item {
@@ -215,3 +280,273 @@ a {
         transform: translateY(0%);
     }
 }
+
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            color: #fff;
+        }
+        .skills-section {
+            margin-top: 30px;
+        }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        .skill-item {
+            background: rgba(31, 36, 45, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+        }
+        .skill-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #7cf03d;
+        }
+        .skill-item i {
+            color: #7cf03d;
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .skill-item h3 {
+            margin-bottom: 5px;
+            color: #7cf03d;
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-img {
+            flex: 0 0 300px;
+        }
+        .about-img img {
+            width: 100%;
+            border-radius: 10px;
+            mix-blend-mode: lighten;
+        }
+        .experience-section {
+            margin-top: 30px;
+            background: rgba(31, 36, 45, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .experience-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #7cf03d;
+            padding-bottom: 15px;
+        }
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .portfolio-item {
+            background: rgba(31, 36, 45, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px #7cf03d;
+        }
+        .portfolio-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .portfolio-item-content {
+            padding: 20px;
+            color: #fff;
+        }
+        .portfolio-item-content h3 {
+            color: #7cf03d;
+            margin-bottom: 10px;
+        }
+        .portfolio-item-content .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .project-tag {
+            background: #7cf03d;
+            color: #1f242d;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        .project-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+        }
+        .project-links a {
+            color: #7cf03d;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+        .project-links a:hover {
+            color: #fff;
+        }
+
+        .contact-form {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 30px;
+        }
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            background: rgba(31, 36, 45, 0.8);
+            color: #fff;
+            border: 2px solid #7cf03d;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            background: #7cf03d;
+            color: #1f242d;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .5s;
+            border: 2px solid #7cf03d00;
+        }
+        .submit-btn:hover {
+            background: transparent;
+            color: #7cf03d;
+            border: 2px solid #7cf03d;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 20px;
+        }
+        .service-box {
+            flex: 1;
+            background: rgba(31, 36, 45, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.5s;
+        }
+        .service-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #7cf03d;
+        }
+        .service-box i {
+            font-size: 50px;
+            color: #7cf03d;
+            margin-bottom: 20px;
+        }
+        .service-box h3 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .service-box p {
+            color: #ddd;
+        }
+
+        .contact-form {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 30px;
+        }
+        .contact-form input, 
+        .contact-form textarea {
+            width: 100%;
+            background: rgba(31, 36, 45, 0.8);
+            color: #fff;
+            border: 2px solid #7cf03d;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        .submit-btn {
+            display: inline-block;
+            padding: 10px 30px;
+            background: #7cf03d;
+            color: #1f242d;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .5s;
+            border: 2px solid #7cf03d00;
+        }
+        .submit-btn:hover {
+            background: transparent;
+            color: #7cf03d;
+            border: 2px solid #7cf03d;
+        }
+        .contact-info {
+            margin-top: 20px;
+        }
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 20px;
+        }
+        .service-box {
+            flex: 1;
+            background: rgba(31, 36, 45, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.5s;
+        }
+        .service-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #7cf03d;
+        }
+        .service-box i {
+            font-size: 50px;
+            color: #7cf03d;
+            margin-bottom: 20px;
+        }
+        .service-box h3 {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .service-box p {
+            color: #ddd;
+        }
